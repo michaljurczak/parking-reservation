@@ -1,0 +1,16 @@
+{
+    "appTitle": "Parking",
+    "ReserveUri": "reserve/",
+    "dateFormat": "YYYY-MM-DD",
+    "hourFormat": "HH:mm:ss",
+    "dateTimeFormat": "YYYY-MM-DD/HH:mm:ss/",
+    "numColumns": "5",
+    "noAvailableParkingSpotsMessage": "There are no available parking spots!",
+    "confirmBookingMessage": "Confirm booking: ",
+    "confirmRemovingMessage": "Confirm removing reservation for: ",
+    "snackbarDisplaySeconds": 2,
+    "reservedSpotFor": "Reserved parking spot: ",
+    "for": " for: ",
+    "successReservation": "Successfully removed reservation!",
+    "notFoundReservation": "Could not find the reservation!"
+}

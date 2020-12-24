@@ -1,0 +1,39 @@
+version: "2"
+services:
+    database:
+        image: postgres:13.0-alpine
+        env_file:
+            - database.env
+        volumes:
+            - database-data:/var/lib/postgresql/data/
+    backend:
+        build: ./parking_backend/
+        env_file:
+            - database.env
+        volumes:
+            - ./parking_backend/:/app_backend
+        ports:
+            - '8000:8000'
+        depends_on:
+            - database
+        stdin_open: true
+        tty: true
+        command: bash -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+    frontend:
+        build: ./parking_frontend/
+        volumes:
+            - ./parking_frontend/:/app_frontend
+            - /app_frontend/node_modules
+        ports:
+            - '19006:19006'
+        environment:
+            - NODE_ENV=development
+            - CHOKIDAR_USEPOLLING=true
+        depends_on:
+            - backend
+        stdin_open: true
+        tty: true
+        command: web
+
+volumes: 
+    database-data: # named volume
